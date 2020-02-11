@@ -8,6 +8,25 @@ class IndecisionApp extends Component {
     };
   }
 
+  componentDidMount() {
+    try {
+      const json = localStorage.getItem("options");
+      const options = JSON.parse(json);
+      if (options) {
+        this.setState(() => ({ options }));
+      }
+    } catch (err) {
+      // do nothing
+    }
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (!prevState.options.length !== this.state.options.length) {
+      const json = JSON.stringify(this.state.options);
+      localStorage.setItem("options", json);
+    }
+  }
+
   handleDeleteOptions = () => {
     this.setState(() => ({ options: [] }));
   };
