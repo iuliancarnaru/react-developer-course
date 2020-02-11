@@ -9,11 +9,13 @@ class IndecisionApp extends Component {
   }
 
   handleDeleteOptions = () => {
-    this.setState(() => {
-      return {
-        options: []
-      };
-    });
+    this.setState(() => ({ options: [] }));
+  };
+
+  handleDeleteOption = optionToRemove => {
+    this.setState(prevState => ({
+      options: prevState.options.filter(option => option !== optionToRemove)
+    }));
   };
 
   handlePick = () => {
@@ -29,11 +31,7 @@ class IndecisionApp extends Component {
       return `This option already exists.`;
     }
 
-    this.setState(prevState => {
-      return {
-        options: prevState.options.concat(option)
-      };
-    });
+    this.setState(prevState => ({ options: prevState.options.concat(option) }));
   };
 
   render() {
@@ -49,6 +47,7 @@ class IndecisionApp extends Component {
         />
         <Options
           options={this.state.options}
+          handleDeleteOption={this.handleAddOption}
           handleDeleteOptions={this.handleDeleteOptions}
         />
         <AddOption handleAddOption={this.handleAddOption} />
@@ -76,19 +75,28 @@ function Action({ handlePick, hasOptions }) {
   );
 }
 
-function Options({ handleDeleteOptions, options }) {
+function Options({ handleDeleteOption, handleDeleteOptions, options }) {
   return (
     <div>
       <button onClick={handleDeleteOptions}>Remove all</button>
       {options.map(option => (
-        <Option key={option} optionText={option} />
+        <Option
+          key={option}
+          optionText={option}
+          handleDeleteOption={handleDeleteOption}
+        />
       ))}
     </div>
   );
 }
 
-function Option({ optionText }) {
-  return <div>{optionText}</div>;
+function Option({ handleDeleteOption, optionText }) {
+  return (
+    <div>
+      {optionText}
+      <button onClick={event => handleDeleteOption(optionText)}>Remove</button>
+    </div>
+  );
 }
 
 class AddOption extends Component {
@@ -103,9 +111,7 @@ class AddOption extends Component {
     event.preventDefault();
     const option = event.target.elements.option.value.trim();
     const error = this.props.handleAddOption(option);
-    this.setState(() => {
-      return { error };
-    });
+    this.setState(() => ({ error }));
   };
 
   render() {
