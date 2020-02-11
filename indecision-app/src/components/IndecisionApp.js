@@ -1,4 +1,8 @@
 import React, { Component } from "react";
+import Header from "./Header";
+import Action from "./Action";
+import Options from "./Options";
+import AddOption from "./AddOption";
 
 class IndecisionApp extends Component {
   constructor(props) {
@@ -70,77 +74,6 @@ class IndecisionApp extends Component {
           handleDeleteOptions={this.handleDeleteOptions}
         />
         <AddOption handleAddOption={this.handleAddOption} />
-      </div>
-    );
-  }
-}
-
-function Header({ title, subtitle }) {
-  return (
-    <div>
-      <h1>{title}</h1>
-      <h2>{subtitle}</h2>
-    </div>
-  );
-}
-
-function Action({ handlePick, hasOptions }) {
-  return (
-    <div>
-      <button onClick={handlePick} disabled={!hasOptions}>
-        What should I do?
-      </button>
-    </div>
-  );
-}
-
-function Options({ handleDeleteOption, handleDeleteOptions, options }) {
-  return (
-    <div>
-      <button onClick={handleDeleteOptions}>Remove all</button>
-      {options.map(option => (
-        <Option
-          key={option}
-          optionText={option}
-          handleDeleteOption={handleDeleteOption}
-        />
-      ))}
-    </div>
-  );
-}
-
-function Option({ handleDeleteOption, optionText }) {
-  return (
-    <div>
-      {optionText}
-      <button onClick={event => handleDeleteOption(optionText)}>Remove</button>
-    </div>
-  );
-}
-
-class AddOption extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      error: undefined
-    };
-  }
-
-  handleAddOption = event => {
-    event.preventDefault();
-    const option = event.target.elements.option.value.trim();
-    const error = this.props.handleAddOption(option);
-    this.setState(() => ({ error }));
-  };
-
-  render() {
-    return (
-      <div>
-        {this.state.error && <p>{this.state.error}</p>}
-        <form onSubmit={this.handleAddOption}>
-          <input type="text" name="option" />
-          <button>Add option</button>
-        </form>
       </div>
     );
   }
