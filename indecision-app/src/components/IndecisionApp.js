@@ -7,7 +7,8 @@ import OptionModal from "./OptionModal";
 
 class IndecisionApp extends Component {
   state = {
-    options: []
+    options: [],
+    selectedOption: undefined
   };
 
   componentDidMount() {
@@ -29,6 +30,10 @@ class IndecisionApp extends Component {
     }
   }
 
+  handleToggleModal = () => {
+    this.setState(() => ({ selectedOption: undefined }));
+  };
+
   handleDeleteOptions = () => {
     this.setState(() => ({ options: [] }));
   };
@@ -43,7 +48,7 @@ class IndecisionApp extends Component {
   handlePick = () => {
     const randomNum = Math.floor(Math.random() * this.state.options.length);
     const option = this.state.options[randomNum];
-    console.log(option);
+    this.setState(() => ({ selectedOption: option }));
   };
 
   handleAddOption = option => {
@@ -73,7 +78,10 @@ class IndecisionApp extends Component {
           handleDeleteOptions={this.handleDeleteOptions}
         />
         <AddOption handleAddOption={this.handleAddOption} />
-        <OptionModal />
+        <OptionModal
+          selectedOption={this.state.selectedOption}
+          handleToggleModal={this.handleToggleModal}
+        />
       </div>
     );
   }
