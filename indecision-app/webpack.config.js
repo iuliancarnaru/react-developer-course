@@ -11,7 +11,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.m?js$/,
         exclude: /(node_modules|bower_components)/,
         use: {
           loader: "babel-loader",
@@ -20,10 +20,14 @@ module.exports = {
             plugins: ["@babel/plugin-proposal-class-properties"]
           }
         }
+      },
+      {
+        test: /\.s[ac]ss$/i,
+        use: ["style-loader", "css-loader", "sass-loader"]
       }
     ]
   },
-  plugins: [new WebpackBar({ minimal: true })],
+  plugins: [new WebpackBar()],
   devtool: "cheap-module-eval-source-map",
   devServer: {
     contentBase: path.join(__dirname, "public"),
