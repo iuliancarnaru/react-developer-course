@@ -1,4 +1,5 @@
 const path = require("path");
+const WebpackBar = require("webpackbar");
 
 module.exports = {
   entry: "./src/index.js",
@@ -22,10 +23,12 @@ module.exports = {
       }
     ]
   },
+  plugins: [new WebpackBar({ minimal: true })],
   devtool: "cheap-module-eval-source-map",
   devServer: {
     contentBase: path.join(__dirname, "public"),
     compress: true,
+    stats: "errors-warnings",
     port: 9000
   }
 };
