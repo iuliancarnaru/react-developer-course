@@ -1,7 +1,7 @@
 import React from "react";
 import Modal from "react-modal";
 
-const OptionModal = ({ selectedOption, handleToggleModal }) => {
+function OptionModal({ selectedOption, handleToggleModal }) {
   return (
     <Modal
       isOpen={!!selectedOption}
@@ -13,6 +13,6 @@ const OptionModal = ({ selectedOption, handleToggleModal }) => {
       <button onClick={handleToggleModal}>Ok</button>
     </Modal>
   );
-};
+}
 
 export default OptionModal;
