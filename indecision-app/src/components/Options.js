@@ -4,9 +4,15 @@ import Option from "./Option";
 function Options({ handleDeleteOption, handleDeleteOptions, options }) {
   return (
     <div>
-      <button className="button button--link" onClick={handleDeleteOptions}>
-        Remove all
-      </button>
+      <div className="widget-header">
+        <h3>Your options</h3>
+        <button className="button button--link" onClick={handleDeleteOptions}>
+          Remove all
+        </button>
+      </div>
+      {!options.length && (
+        <p className="widget-message">Please add an option to get started!</p>
+      )}
       {options.map(option => (
         <Option
           key={option}
