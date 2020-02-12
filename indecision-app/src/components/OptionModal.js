@@ -8,10 +8,13 @@ function OptionModal({ selectedOption, handleToggleModal }) {
       contentLabel="Selected Option"
       onRequestClose={handleToggleModal}
       ariaHideApp={false}
+      className="modal"
     >
-      <h3>Selected option</h3>
-      {selectedOption && <p>{selectedOption}</p>}
-      <button onClick={handleToggleModal}>Ok</button>
+      <h3 className="modal__title">Selected option</h3>
+      {selectedOption && <p className="modal__body">{selectedOption}</p>}
+      <button className="button" onClick={handleToggleModal}>
+        Ok
+      </button>
     </Modal>
   );
 }
