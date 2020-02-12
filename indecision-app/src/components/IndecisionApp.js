@@ -5,12 +5,9 @@ import Options from "./Options";
 import AddOption from "./AddOption";
 
 class IndecisionApp extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      options: []
-    };
-  }
+  state = {
+    options: []
+  };
 
   componentDidMount() {
     try {
