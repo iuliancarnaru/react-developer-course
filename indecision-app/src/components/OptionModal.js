@@ -7,6 +7,7 @@ function OptionModal({ selectedOption, handleToggleModal }) {
       isOpen={!!selectedOption}
       contentLabel="Selected Option"
       onRequestClose={handleToggleModal}
+      ariaHideApp={false}
     >
       <h3>Selected option</h3>
       {selectedOption && <p>{selectedOption}</p>}
