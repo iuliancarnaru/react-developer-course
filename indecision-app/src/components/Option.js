@@ -1,10 +1,17 @@
 import React from "react";
 
-function Option({ handleDeleteOption, optionText }) {
+function Option({ count, handleDeleteOption, optionText }) {
   return (
-    <div>
-      {optionText}
-      <button className="button button--link"onClick={event => handleDeleteOption(optionText)}>Remove</button>
+    <div className="option">
+      <p className="option__text">
+        {count}: {optionText}
+      </p>
+      <button
+        className="button button--link"
+        onClick={event => handleDeleteOption(optionText)}
+      >
+        Remove
+      </button>
     </div>
   );
 }

@@ -13,9 +13,10 @@ function Options({ handleDeleteOption, handleDeleteOptions, options }) {
       {!options.length && (
         <p className="widget-message">Please add an option to get started!</p>
       )}
-      {options.map(option => (
+      {options.map((option, index) => (
         <Option
           key={option}
+          count={index + 1}
           optionText={option}
           handleDeleteOption={handleDeleteOption}
         />
