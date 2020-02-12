@@ -36,8 +36,9 @@ class IndecisionApp extends Component {
   };
 
   handleDeleteOption = optionToRemove => {
+    console.log(`clicked`);
     this.setState(prevState => ({
-      options: prevState.options.filter(option => option !== optionToRemove)
+      options: prevState.options.filter(option => optionToRemove !== option)
     }));
   };
 
@@ -70,7 +71,7 @@ class IndecisionApp extends Component {
         />
         <Options
           options={this.state.options}
-          handleDeleteOption={this.handleAddOption}
+          handleDeleteOption={this.handleDeleteOption}
           handleDeleteOptions={this.handleDeleteOptions}
         />
         <AddOption handleAddOption={this.handleAddOption} />
