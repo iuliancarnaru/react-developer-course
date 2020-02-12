@@ -4,7 +4,7 @@ function Option({ handleDeleteOption, optionText }) {
   return (
     <div>
       {optionText}
-      <button onClick={event => handleDeleteOption(optionText)}>Remove</button>
+      <button className="button button--link"onClick={event => handleDeleteOption(optionText)}>Remove</button>
     </div>
   );
 }

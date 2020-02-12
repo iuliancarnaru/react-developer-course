@@ -1,0 +1,34 @@
+.big-button {
+  background-color: $green;
+  border: none;
+  border-bottom: 0.6rem solid darken($green, 10%);
+  color: $white;
+  font-weight: bold;
+  font-size: $l-size;
+  width: 100%;
+  margin-bottom: $xl-size;
+  padding: 2.4rem;
+  cursor: pointer;
+
+  &:disabled {
+    cursor: default;
+    opacity: 0.5;
+  }
+}
+
+.button {
+  background-color: $green;
+  border: none;
+  border-bottom: 0.3rem solid darken($green, 10%);
+  color: $white;
+  font-weight: 500;
+  padding: $s-size;
+  cursor: pointer;
+
+  &--link {
+    background: none;
+    border: none;
+    color: $off-white;
+    padding: 0;
+  }
+}

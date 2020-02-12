@@ -4,7 +4,9 @@ import Option from "./Option";
 function Options({ handleDeleteOption, handleDeleteOptions, options }) {
   return (
     <div>
-      <button onClick={handleDeleteOptions}>Remove all</button>
+      <button className="button button--link" onClick={handleDeleteOptions}>
+        Remove all
+      </button>
       {options.map(option => (
         <Option
           key={option}
