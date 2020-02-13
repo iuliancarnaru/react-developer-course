@@ -1,13 +1,13 @@
 import React, { Fragment } from "react";
 import styled from "styled-components";
 import GlobalStyle from "../style/GlobalStyle";
-import { Router, Link } from "@reach/router";
+import { Router, Link, navigate } from "@reach/router";
 
 const App = () => {
   return (
     <Fragment>
       <GlobalStyle />
-
+      <Header />
       <Router>
         <ExpenseDashboardPage path="/" />
         <AddExpensePage path="/create" />
@@ -16,6 +16,30 @@ const App = () => {
         <NotFoundPage default />
       </Router>
     </Fragment>
+  );
+};
+
+const NavLink = props => (
+  <Link
+    {...props}
+    getProps={({ isCurrent }) => {
+      return {
+        style: {
+          color: isCurrent ? "red" : "blue"
+        }
+      };
+    }}
+  />
+);
+
+const Header = () => {
+  return (
+    <header>
+      <h1>Expensify</h1>
+      <NavLink to="/create">Create</NavLink>
+      <NavLink to="/edit">Edit</NavLink>
+      <NavLink to="/help">Help</NavLink>
+    </header>
   );
 };
 
@@ -54,7 +78,9 @@ const HelpPage = () => {
 const NotFoundPage = () => {
   return (
     <div>
-      <p>404 NotFoundPage</p>
+      <p>Uppsss ... 404 Page not found! </p>
+      <Link to="/">Go back to home page.</Link>
+      {/* {setTimeout(() => navigate(`/`), 2000)} */}
     </div>
   );
 };
