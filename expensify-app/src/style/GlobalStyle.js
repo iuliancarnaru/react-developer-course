@@ -15,7 +15,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   body {
-    font-family: 'Ubuntu', sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
     font-size: 1.6rem;
     font-weight: 400;
     line-height: 1.6;

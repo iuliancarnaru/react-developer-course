@@ -1,5 +1,5 @@
 {
-  "name": "boilerplate",
+  "name": "expensify-app",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -16,7 +16,6 @@
     "@babel/plugin-proposal-class-properties": "^7.8.3",
     "@babel/preset-env": "^7.8.4",
     "@babel/preset-react": "^7.8.3",
-    "@svgr/webpack": "^5.1.0",
     "babel-loader": "^8.0.6",
     "babel-plugin-styled-components": "^1.10.7",
     "css-loader": "^3.4.2",
