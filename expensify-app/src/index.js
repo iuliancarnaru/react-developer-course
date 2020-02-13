@@ -1,6 +1,6 @@
 import React from "react";
 import { render } from "react-dom";
 import "normalize.css";
-import App from "./components/App";
+import AppRouter from "./routes/AppRouter";
 
-render(<App />, document.getElementById("root"));
+render(<AppRouter />, document.getElementById("root"));
