@@ -1,26 +1,19 @@
 import React from "react";
 import { Link } from "@reach/router";
 
-const NavLink = props => (
-  <Link
-    {...props}
-    getProps={({ isCurrent }) => {
-      return {
-        style: {
-          color: isCurrent ? "red" : "blue"
-        }
-      };
-    }}
-  />
-);
+const isActive = ({ isCurrent }) => {
+  return isCurrent ? { className: "active" } : null;
+};
 
-const Header = () => {
+const NavLink = props => <Link getProps={isActive} {...props} />;
+
+const Header = props => {
   return (
     <header>
       <h1>Expensify</h1>
-      <NavLink to="/create">Create</NavLink>
-      <NavLink to="/edit">Edit</NavLink>
-      <NavLink to="/help">Help</NavLink>
+      <NavLink to="/">Dashboard</NavLink>
+      <NavLink to="create">Create</NavLink>
+      <NavLink to="help">Help</NavLink>
     </header>
   );
 };

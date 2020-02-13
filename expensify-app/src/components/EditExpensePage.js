@@ -1,9 +1,9 @@
 import React from "react";
 
-const EditExpensePage = () => {
+const EditExpensePage = ({ id }) => {
   return (
     <div>
-      <p>EditExpensePage</p>
+      <p>EditExpensePage with id {id}</p>
     </div>
   );
 };
