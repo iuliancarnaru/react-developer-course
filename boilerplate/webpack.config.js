@@ -40,6 +40,7 @@ module.exports = {
     contentBase: path.join(__dirname, "public"),
     compress: true,
     stats: "errors-warnings",
-    port: 9000
+    port: 9000,
+    historyApiFallback: true
   }
 };
