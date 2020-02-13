@@ -15,9 +15,9 @@ const AppRouter = () => (
     <Header />
     <Router>
       <ExpenseDashboardPage path="/" />
-      <AddExpensePage path="create" />
-      <EditExpensePage path="edit/:id" />
-      <HelpPage path="help" />
+      <AddExpensePage path="/create" />
+      <EditExpensePage path="/edit/:id" />
+      <HelpPage path="/help" />
       <NotFoundPage default />
     </Router>
   </Fragment>

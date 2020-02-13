@@ -7,13 +7,13 @@ const isActive = ({ isCurrent }) => {
 
 const NavLink = props => <Link getProps={isActive} {...props} />;
 
-const Header = props => {
+const Header = () => {
   return (
     <header>
       <h1>Expensify</h1>
       <NavLink to="/">Dashboard</NavLink>
-      <NavLink to="create">Create</NavLink>
-      <NavLink to="help">Help</NavLink>
+      <NavLink to="/create">Create</NavLink>
+      <NavLink to="/help">Help</NavLink>
     </header>
   );
 };
