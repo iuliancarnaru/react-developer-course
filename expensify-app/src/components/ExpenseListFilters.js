@@ -1,6 +1,12 @@
 import React from "react";
 import { connect } from "react-redux";
-import { setTextFilter } from "../redux/actions/filters";
+import {
+  setTextFilter,
+  sortByAmount,
+  sortByDate
+} from "../redux/actions/filters";
+
+// a controled input is when the value is controlled by JS.
 
 const ExpenseListFilters = props => (
   <div>
@@ -11,6 +17,19 @@ const ExpenseListFilters = props => (
         props.dispatch(setTextFilter(event.target.value));
       }}
     />
+    <select
+      value={props.filters.sortBy}
+      onChange={event => {
+        if (event.target.value === "date") {
+          props.dispatch(sortByDate());
+        } else if (event.target.value === "amount") {
+          props.dispatch(sortByAmount());
+        }
+      }}
+    >
+      <option value="date">Date</option>
+      <option value="amount">Amount</option>
+    </select>
   </div>
 );
 
