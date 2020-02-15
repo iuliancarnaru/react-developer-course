@@ -1,25 +1,51 @@
 import React, { Component } from "react";
+import moment from "moment";
+import { SingleDatePicker } from "react-dates";
+import "react-dates/initialize";
+import "react-dates/lib/css/_datepicker.css";
+import uuid from "uuid";
 
 class ExpenseForm extends Component {
   state = {
     description: "",
     note: "",
-    amount: ""
+    amount: "",
+    createdAt: moment(),
+    calendarFocused: false,
+    error: ""
   };
 
   handleInputChange = event => {
     const { name, value } = event.target;
     if (name !== "amount") {
       this.setState(() => ({ [name]: value }));
-    } else if (value.match(/^\d*(\.\d{0,2})?$/)) {
+    } else if (!value || value.match(/^\d{1,}(\.\d{0,2})?$/)) {
       this.setState(() => ({ [name]: value }));
+    }
+  };
+
+  handleSubmit = event => {
+    event.preventDefault();
+    if (!this.state.description || !this.state.amount) {
+      this.setState(() => ({
+        error: "Please provide description and amount."
+      }));
+    } else {
+      this.setState(() => ({ error: "" }));
+      this.props.onSubmit({
+        description: this.state.description,
+        amount: parseFloat(this.state.amount, 10) * 100,
+        createdAt: this.state.createdAt.valueOf(),
+        note: this.state.note
+      });
     }
   };
 
   render() {
     return (
       <div>
-        <form action="">
+        {this.state.error && <p>{this.state.error}</p>}
+        <form onSubmit={this.handleSubmit}>
           <input
             type="text"
             name="description"
@@ -36,6 +62,17 @@ class ExpenseForm extends Component {
             value={this.state.amount}
             placeholder="Amount"
             onChange={this.handleInputChange}
+          />
+          <SingleDatePicker
+            date={this.state.createdAt}
+            onDateChange={createdAt =>
+              createdAt ? this.setState({ createdAt }) : ""
+            }
+            focused={this.state.focused}
+            onFocusChange={({ focused }) => this.setState({ focused })}
+            id={uuid()}
+            numberOfMonths={1}
+            isOutsideRange={() => false}
           />
           <textarea
             name="note"
