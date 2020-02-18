@@ -1,0 +1,7 @@
+{
+  "setupFilesAfterEnv": ["<rootDir>src/tests/setupTests.js"],
+  "transformIgnorePatterns": ["<rootDir>/node_modules/"],
+  "transform": {
+    "^.+\\.js$": "babel-jest"
+  }
+}
