@@ -1,7 +1,4 @@
 {
-  "setupFilesAfterEnv": ["<rootDir>src/tests/setupTests.js"],
-  "transformIgnorePatterns": ["<rootDir>/node_modules/"],
-  "transform": {
-    "^.+\\.js$": "babel-jest"
-  }
+  "setupFiles": ["raf/polyfill", "<rootDir>/src/tests/setupTests.js"],
+  "snapshotSerializers": ["enzyme-to-json/serializer"]
 }
