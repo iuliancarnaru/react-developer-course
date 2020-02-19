@@ -79,7 +79,7 @@ class ExpenseForm extends Component {
             onDateChange={createdAt =>
               createdAt ? this.setState({ createdAt }) : ""
             }
-            focused={this.state.focused}
+            focused={this.state.calendarFocused}
             onFocusChange={({ focused }) =>
               this.setState({ calendarFocused: focused })
             }
