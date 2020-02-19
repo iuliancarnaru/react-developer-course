@@ -32,3 +32,29 @@ test("should set description on input change", () => {
     .simulate("change", { target: { value } });
   expect(wrapper.state("description")).toBe(value);
 });
+
+test("should set note on textarea change", () => {
+  const wrapper = shallow(<ExpenseForm />);
+  const value = "New note";
+  wrapper.find("textarea").simulate("change", { target: { value } });
+  expect(wrapper.state("note")).toBe(value);
+});
+
+test("should set amount if valid input", () => {
+  const wrapper = shallow(<ExpenseForm />);
+  const value = "23.50";
+  wrapper
+    .find("input")
+    .at(1)
+    .simulate("change", { target: { value } });
+  expect(wrapper.state("amount")).toBe(value);
+});
+test("should set amount if invalid input", () => {
+  const wrapper = shallow(<ExpenseForm />);
+  const value = "25.5555";
+  wrapper
+    .find("input")
+    .at(1)
+    .simulate("change", { target: { value } });
+  expect(wrapper.state("amount")).toBe("");
+});

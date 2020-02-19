@@ -18,24 +18,24 @@ class ExpenseForm extends Component {
     };
   }
 
-  onDescriptionChange = e => {
-    const description = e.target.value;
+  onDescriptionChange = event => {
+    const description = event.target.value;
     this.setState(() => ({ description }));
   };
-  onNoteChange = e => {
-    const note = e.target.value;
+  onNoteChange = event => {
+    const note = event.target.value;
     this.setState(() => ({ note }));
   };
-  onAmountChange = e => {
-    const amount = e.target.value;
+  onAmountChange = event => {
+    const amount = event.target.value;
 
     if (!amount || amount.match(/^\d{1,}(\.\d{0,2})?$/)) {
       this.setState(() => ({ amount }));
     }
   };
 
-  onSubmit = e => {
-    e.preventDefault();
+  onSubmit = event => {
+    event.preventDefault();
 
     if (!this.state.description || !this.state.amount) {
       this.setState(() => ({
