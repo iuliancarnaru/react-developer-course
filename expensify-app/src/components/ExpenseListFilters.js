@@ -7,8 +7,6 @@ import {
   setStartDate,
   setEndDate
 } from "../redux/actions/filters";
-import "react-dates/initialize";
-import "react-dates/lib/css/_datepicker.css";
 import { DateRangePicker } from "react-dates";
 import uuid from "uuid";
 
