@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import moment from "moment";
-import "react-dates/initialize";
-import "react-dates/lib/css/_datepicker.css";
+
 import { SingleDatePicker } from "react-dates";
 import uuid from "uuid";
 
@@ -19,17 +18,25 @@ class ExpenseForm extends Component {
     };
   }
 
-  handleInputChange = event => {
-    const { name, value } = event.target;
-    if (name !== "amount") {
-      this.setState(() => ({ [name]: value }));
-    } else if (!value || value.match(/^\d{1,}(\.\d{0,2})?$/)) {
-      this.setState(() => ({ [name]: value }));
+  onDescriptionChange = e => {
+    const description = e.target.value;
+    this.setState(() => ({ description }));
+  };
+  onNoteChange = e => {
+    const note = e.target.value;
+    this.setState(() => ({ note }));
+  };
+  onAmountChange = e => {
+    const amount = e.target.value;
+
+    if (!amount || amount.match(/^\d{1,}(\.\d{0,2})?$/)) {
+      this.setState(() => ({ amount }));
     }
   };
 
-  handleSubmit = event => {
-    event.preventDefault();
+  onSubmit = e => {
+    e.preventDefault();
+
     if (!this.state.description || !this.state.amount) {
       this.setState(() => ({
         error: "Please provide description and amount."
@@ -49,7 +56,7 @@ class ExpenseForm extends Component {
     return (
       <div>
         {this.state.error && <p>{this.state.error}</p>}
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={this.onSubmit}>
           <input
             type="text"
             name="description"
@@ -57,7 +64,7 @@ class ExpenseForm extends Component {
             placeholder="Description"
             autoFocus
             value={this.state.description}
-            onChange={this.handleInputChange}
+            onChange={this.onDescriptionChange}
           />
           <input
             type="text"
@@ -65,7 +72,7 @@ class ExpenseForm extends Component {
             id="amount"
             value={this.state.amount}
             placeholder="Amount"
-            onChange={this.handleInputChange}
+            onChange={this.onAmountChange}
           />
           <SingleDatePicker
             date={this.state.createdAt}
@@ -84,7 +91,7 @@ class ExpenseForm extends Component {
             cols="30"
             rows="10"
             placeholder="Add a note for your expense (optional)"
-            onChange={this.handleInputChange}
+            onChange={this.onNoteChange}
           ></textarea>
           <button type="submit">Add expense</button>
         </form>
