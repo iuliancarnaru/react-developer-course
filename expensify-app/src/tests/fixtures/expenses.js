@@ -7,7 +7,7 @@ export const expenses = [
     description: "Fuel",
     note: "",
     amount: 6500,
-    createdAt: moment(0)
+    createdAt: 0
   },
   {
     id: "2",
