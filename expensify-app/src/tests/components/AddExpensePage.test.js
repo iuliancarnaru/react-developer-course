@@ -8,7 +8,9 @@ let addExpense, navigate, wrapper;
 beforeEach(() => {
   addExpense = jest.fn();
   navigate = jest.fn();
-  wrapper = shallow(<AddExpensePage onSubmit={addExpense} navigate={navigate} />);
+  wrapper = shallow(
+    <AddExpensePage addExpense={addExpense} navigate={navigate} />
+  );
 });
 
 test("should render AddExpensePage correctly", () => {
@@ -18,5 +20,5 @@ test("should render AddExpensePage correctly", () => {
 test("should handle onSubmit", () => {
   wrapper.find("ExpenseForm").prop("onSubmit")(expenses[1]);
   // TODO: expect(navigate).toHaveBeenLastCalledWith("/");
-  expect(onSubmit).toHaveBeenLastCalledWith(expenses[1]);
+  expect(addExpense).toHaveBeenLastCalledWith(expenses[1]);
 });

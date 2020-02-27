@@ -81,7 +81,6 @@ test("should call onSubmit for valid form submission", () => {
 test("should set new date on date change", () => {
   const now = moment();
   const wrapper = shallow(<ExpenseForm />);
-  console.log(wrapper);
   wrapper.find("withStyles(SingleDatePicker)").prop("onDateChange")(now);
   expect(wrapper.state("createdAt")).toEqual(now);
 });
