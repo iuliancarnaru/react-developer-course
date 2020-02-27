@@ -4,7 +4,7 @@ import { navigate } from "@reach/router";
 import ExpenseForm from "./ExpenseForm";
 import { editExpense, removeExpense } from "../redux/actions/expenses";
 
-class EditExpensePage extends Component {
+export class EditExpensePage extends Component {
   onSubmit = expense => {
     this.props.editExpense(this.props.expense.id, expense);
     setTimeout(() => navigate("/"), 0);
@@ -18,7 +18,7 @@ class EditExpensePage extends Component {
   render() {
     return (
       <div>
-        <ExpenseForm expense={props.expense} onSubmit={this.onSubmit} />
+        <ExpenseForm expense={this.props.expense} onSubmit={this.onSubmit} />
         <button onClick={this.onRemove}>Remove</button>
       </div>
     );
